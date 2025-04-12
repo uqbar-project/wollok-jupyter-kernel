@@ -1,6 +1,6 @@
 [![Python package](https://github.com/uqbar-project/wollok-jupyter-kernel/actions/workflows/test.yml/badge.svg)](https://github.com/uqbar-project/wollok-jupyter-kernel/actions/workflows/test.yml)
 
-<img src="./images/wollok-jupyter-logo.png" height="100px" width="85px">
+<img src="./images/wollok-jupyter.png" height="100px" width="85px">
 
 ## Wollok Kernel for Jupyter notebook
 
