@@ -1,3 +1,7 @@
+[![Python package](https://github.com/uqbar-project/wollok-jupyter-kernel/actions/workflows/test.yml/badge.svg)](https://github.com/uqbar-project/wollok-jupyter-kernel/actions/workflows/test.yml)
+
+<img src="./images/wollok_jupyter.png" height="100px" width="100px">
+
 ## Wollok Kernel for Jupyter notebook
 
 `wollok_kernel` is a Jupyter kernel implementation, started from [a wrapper kernel](http://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html).
