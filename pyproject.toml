@@ -48,3 +48,5 @@ include = [
 
 [tool.hatch.build.targets.wheel.shared-data]
 "data_kernelspec/share" = "share"
+
+reportMissingModuleSource = "none"
