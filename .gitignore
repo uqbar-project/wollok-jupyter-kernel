@@ -17,3 +17,5 @@ htmlcov
 .cache
 .idea
 data_kernelspec
+
+.history
