@@ -24,6 +24,7 @@ requires-python = ">=3.8"
 dependencies = [
     "ipykernel",
     "jupyter_client",
+    "pythonmonkey",
 ]
 
 [project.optional-dependencies]
@@ -40,10 +41,10 @@ path = "wollok_kernel/__init__.py"
 # Used to call hatch_build.py
 [tool.hatch.build.hooks.custom]
 
-
 [tool.hatch.build.targets.sdist]
 include = [
     "/wollok_kernel",
+    "/wollok_kernel/wollok_ts",
 ]
 
 [tool.hatch.build.targets.wheel.shared-data]
