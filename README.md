@@ -25,6 +25,7 @@ git clone https://github.com/jupyter/wollok_kernel
 cd wollok_kernel
 conda create -n ker jupyter
 conda activate ker
+cd ..
 pip install .
 ```
 
