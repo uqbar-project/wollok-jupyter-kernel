@@ -1,18 +1,20 @@
-# import pythonmonkey as pm
+import pythonmonkey as pm
 
-def fn_is_odd_python(value):
+# is_odd = pm.require("./node_modules/is-odd/index.js")
+
+def fn_test(value):
+    """Check if a given value is odd.
+
+    Args:
+        value: The input value to check, should be convertible to an integer.
+
+    Returns:
+        str: 'true' if the number is odd, 'false' if even, or 'Invalid input' if the
+            value cannot be converted to an integer.
+    """
     try:
-        return str(int(value) % 2 != 0)
+        number = int(value)
+        result = pm.eval(f"new Date(new Date().getTime() + {number})".format(number))
+        return result
     except (ValueError, TypeError):
         return "Invalid input"
-
-# is_odd = pm.require("is-odd")
-    
-# def fn_is_odd(value):
-#     try:
-#         number = int(value)
-#         return str(is_odd(number))
-#     except (ValueError, TypeError):
-#         return "Invalid input"
-    
-    

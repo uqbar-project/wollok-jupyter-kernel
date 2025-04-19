@@ -1,5 +1,6 @@
 from ipykernel.kernelbase import Kernel
-from wollok_kernel.wollok_ts.library import fn_is_odd_python
+from wollok_kernel.wollok_ts.library import fn_test
+
 
 class WollokKernel(Kernel):
     implementation = 'Wollok'
@@ -13,15 +14,24 @@ class WollokKernel(Kernel):
     }
     banner = "Wollok >>> kernel"
 
-    def do_execute(self, code, silent, store_history=True, user_expressions=None,
-                   allow_stdin=False):
+    def do_execute(
+        self, code, silent, store_history=True,
+        user_expressions=None, allow_stdin=False
+    ):
         if not silent:
-            stream_content = {'name': 'stdout', 'text': fn_is_odd_python(code)}
+            stream_content = {'name': 'stdout', 'text': fn_test(code)}
             self.send_response(self.iopub_socket, 'stream', stream_content)
 
-        return {'status': 'ok',
-                # The base class increments the execution count
-                'execution_count': self.execution_count,
-                'payload': [],
-                'user_expressions': {},
-               }
+        return {
+            'status': 'ok',
+            # The base class increments the execution count
+            'execution_count': self.execution_count,
+            'payload': [],
+            'user_expressions': {}
+        }
+
+    def do_apply(self, content, bufs, msg_id, reply_metadata):
+        return {
+            'status': 'ok',
+            'started': True
+        }
