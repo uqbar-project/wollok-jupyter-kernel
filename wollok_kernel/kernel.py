@@ -5,7 +5,7 @@ from wollok_kernel.wollok_ts.library import fn_test
 class WollokKernel(Kernel):
     implementation = 'Wollok'
     implementation_version = '1.0'
-    language = 'no-op'
+    language = 'wollok'
     language_version = '0.1'
     language_info = {
         'name': 'wollok',
@@ -19,7 +19,8 @@ class WollokKernel(Kernel):
         user_expressions=None, allow_stdin=False
     ):
         if not silent:
-            stream_content = {'name': 'stdout', 'text': fn_test(code)}
+            result = fn_test(code)
+            stream_content = {'name': 'stdout', 'text': result, 'data': result}
             self.send_response(self.iopub_socket, 'stream', stream_content)
 
         return {

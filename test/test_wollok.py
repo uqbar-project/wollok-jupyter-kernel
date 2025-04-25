@@ -23,12 +23,26 @@ class WollokKernelTests(jkt.KernelTests):
     # checked against language_info.name in kernel_info_reply
     language_name = "wollok"
 
-    # the normal file extension (including the leading dot) for this language
-    # checked against language_info.file_extension in kernel_info_reply
-    file_extension = ".wlk"
+    # code samples
+    code_execute_result = [
+        {"code": "6", "result": "6"}
+        ]
 
-    # code which should write the exact string `hello, world` to STDOUT
-    code_hello_world = "hello, world"
+    def test_execute_result(self) -> None:
+        if not self.code_execute_result:
+            raise SkipTest("No code execute result")
+
+        for sample in self.code_execute_result:
+            with self.subTest(code=sample["code"]):
+                self.flush_channels()
+                reply, output_msgs = self.execute_helper(sample["code"])
+                self.assertEqual(reply["content"]["status"], "ok")
+                self.assertGreaterEqual(len(output_msgs), 1)
+                for msg in output_msgs:
+                    print(" result ****** " + str(msg))
+                    self.assertIsNotNone(msg["content"]["text"], "No content.text received")
+                    if "result" in sample:
+                        self.assertEqual(msg["content"]["text"], sample["result"])
 
 
 if __name__ == "__main__":

@@ -41,10 +41,9 @@ path = "wollok_kernel/__init__.py"
 # Used to call hatch_build.py
 [tool.hatch.build.hooks.custom]
 
-[tool.hatch.build.targets.sdist]
+[tool.hatch.build]
 include = [
-    "/wollok_kernel",
-    "/wollok_kernel/wollok_ts/node_modules",
+    "/wollok_kernel/**/"
 ]
 
 [tool.hatch.build.targets.wheel.shared-data]

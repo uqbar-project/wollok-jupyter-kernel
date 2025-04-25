@@ -29,6 +29,16 @@ cd ..
 pip install .
 ```
 
+After that, you can select a kernel from Jupyter Notebook file, "Wollok" and ".conda" kernel, Restart the kernel and enjoy it!
+
+## Testing
+
+Simply run
+
+```bash
+python -m unittest -v
+```
+
 ## Using Wollok kernel
 
 - **Notebook**: The *New* menu in the notebook should show an option for a Wollok notebook.

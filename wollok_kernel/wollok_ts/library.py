@@ -1,6 +1,7 @@
-import pythonmonkey as pm
+# import pythonmonkey as pm
 
-# is_odd = pm.require("./node_modules/is-odd/index.js")
+# sha256 = pm.require("./sha256.js")
+
 
 def fn_test(value):
     """Check if a given value is odd.
@@ -13,8 +14,7 @@ def fn_test(value):
             value cannot be converted to an integer.
     """
     try:
-        number = int(value)
-        result = pm.eval(f"new Date(new Date().getTime() + {number})".format(number))
-        return result
+        result = value  # sha256(value)
+        return str(result)
     except (ValueError, TypeError):
         return "Invalid input"
