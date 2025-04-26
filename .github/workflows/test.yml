@@ -34,6 +34,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+      - uses: actions/setup-node@v4
+      - run: |
+          cd wollok_kernel/wollok_ts
+          npm install
+          cd ../..
       - name: Install dependencies
         run: |
           pip install -e ".[test]"
