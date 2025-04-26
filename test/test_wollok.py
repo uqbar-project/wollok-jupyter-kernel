@@ -42,7 +42,6 @@ class WollokKernelTests(jkt.KernelTests):
                 self.assertEqual(reply["content"]["status"], "ok")
                 self.assertGreaterEqual(len(output_msgs), 1)
                 for msg in output_msgs:
-                    print(" result ****** " + str(msg))
                     self.assertIsNotNone(
                         msg["content"]["text"],
                         "No content.text received"
