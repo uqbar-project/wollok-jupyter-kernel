@@ -1,6 +1,6 @@
-# import pythonmonkey as pm
+import pythonmonkey as pm
 
-# sha256 = pm.require("./sha256.js")
+sha256 = pm.require("./sha256.js")
 
 
 def fn_test(value):
@@ -14,7 +14,7 @@ def fn_test(value):
             value cannot be converted to an integer.
     """
     try:
-        result = value  # sha256(value)
+        result = sha256(value)
         return str(result)
     except (ValueError, TypeError):
         return "Invalid input"
