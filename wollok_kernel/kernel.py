@@ -4,9 +4,9 @@ from wollok_kernel.wollok_ts.library import fn_test
 
 class WollokKernel(Kernel):
     implementation = 'Wollok'
-    implementation_version = '1.0'
+    implementation_version = '1.2'
     language = 'wollok'
-    language_version = '0.1'
+    language_version = '3.3.1'
     language_info = {
         'name': 'wollok',
         'mimetype': 'text/plain',
