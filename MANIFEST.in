@@ -1,0 +1,2 @@
+# MANIFEST.in
+recursive-include wollok_kernel/wollok_ts/node_modules *
