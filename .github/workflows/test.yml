@@ -58,6 +58,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Base Setup
         uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+      - name: Install node dependencies (necessary to build Python dependencies)
+        run: |
+          cd wollok_kernel/wollok_ts
+          npm install
+          cd ../..
       - name: Install Python Dependencies
         run: |
           pip install -e .
