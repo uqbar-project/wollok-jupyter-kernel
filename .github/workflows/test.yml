@@ -74,3 +74,4 @@ jobs:
             cd wollok_kernel/wollok_ts
             npm install
             cd ../..
+            cp -r wollok_kernel/wollok_ts/node_modules wollok_kernel/wollok_ts/node_modules
