@@ -66,24 +66,8 @@ jobs:
       - name: Install Python Dependencies
         run: |
           pip install -e .
-          check_release:
-            runs-on: ubuntu-latest
-            steps:
-              - name: Checkout
-                uses: actions/checkout@v4
-              - name: Base Setup
-                uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
-              - name: Install node dependencies (necessary to build Python dependencies)
-                run: |
-                  cd wollok_kernel/wollok_ts
-                  npm install
-                  ls -la node_modules
-                  cd ../..
-              - name: Install Python Dependencies
-                run: |
-                  pip install -e .
-              - name: Check Release
-                uses: jupyter-server/jupyter_releaser/.github/actions/check-release@v2
-                with:
-                  token: ${{ secrets.GITHUB_TOKEN }}
-                  steps_to_skip: "build"
+      - name: Check Release
+        uses: jupyter-server/jupyter_releaser/.github/actions/check-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          steps_to_skip: "build"
