@@ -3,6 +3,7 @@ First smoke test for Wollok. TODO: develop
 """
 
 import unittest
+from unittest import SkipTest
 
 import jupyter_kernel_test as jkt
 
