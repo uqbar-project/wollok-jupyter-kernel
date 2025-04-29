@@ -1,0 +1,8 @@
+[MASTER]
+disable=
+  C0114, # missing-class-docstring
+  C0115, # missing-module-docstring
+  W0223, # method not implemented
+
+[MESSAGES CONTROL]
+disable=too-many-arguments

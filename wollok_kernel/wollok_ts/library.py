@@ -1,18 +1,20 @@
 import pythonmonkey as pm
 
+sha256 = pm.require("./sha256.js")
 
-def fn_is_odd_python(value):
+
+def fn_test(value):
+    """Check if a given value is odd.
+
+    Args:
+        value: The input value to check, should be convertible to an integer.
+
+    Returns:
+        str: 'true' if the number is odd, 'false' if even, or 'Invalid input' if the
+            value cannot be converted to an integer.
+    """
     try:
-        return str(int(value) % 2 == 0)
+        result = sha256(value)
+        return str(result)
     except (ValueError, TypeError):
         return "Invalid input"
-
-
-is_odd = pm.require("is-odd")
-
-# def fn_is_odd(value):
-#     try:
-#         number = int(value)
-#         return str(is_odd(number))
-#     except (ValueError, TypeError):
-#         return "Invalid input"

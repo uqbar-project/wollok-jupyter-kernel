@@ -1,5 +1,5 @@
 {
-    "dependencies": {
-      "is-odd": "^3.0.1"
-    }
+  "dependencies": {
+    "crypto-js": "^4.2.0"
   }
+}

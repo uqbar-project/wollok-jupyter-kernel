@@ -28,13 +28,19 @@ jobs:
           - os: windows-latest
             python-version: "3.11"
           - os: ubuntu-latest
-            python-version: "pypy-3.11"
+            python-version: "3.11"
           - os: macos-latest
             python-version: "3.11"
     steps:
       - uses: actions/checkout@v4
       - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
-      - name: Install dependencies
+      - uses: actions/setup-node@v4
+      - name: Install node dependencies
+        run: |
+          cd wollok_kernel/wollok_ts
+          npm install
+          cd ../..
+      - name: Install Python dependencies
         run: |
           pip install -e ".[test]"
       - name: Test with kernel tester
@@ -46,13 +52,22 @@ jobs:
           jupyter kernelspec list | grep wollok
 
   check_release:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Base Setup
         uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
-      - name: Install Dependencies
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install node dependencies (necessary to build Python dependencies)
+        run: |
+          cd wollok_kernel/wollok_ts
+          npm install
+          cd ../..
+      - name: Install Python Dependencies
         run: |
           pip install -e .
       - name: Check Release
