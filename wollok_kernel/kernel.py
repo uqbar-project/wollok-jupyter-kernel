@@ -15,7 +15,7 @@ class WollokKernel(Kernel):
     banner = "Wollok >>> kernel"
 
     def do_execute(
-        self, code, silent, store_history=True, user_expressions=None, allow_stdin=False
+        self, code: str, silent: bool, store_history=True, user_expressions=None, allow_stdin=False
     ):
         if not silent:
             result = fn_test(code)
@@ -30,5 +30,5 @@ class WollokKernel(Kernel):
             "user_expressions": {},
         }
 
-    def do_apply(self, content, bufs, msg_id, reply_metadata):
+    def do_apply(self, content: str, bufs, msg_id: str, reply_metadata):
         return {"status": "ok", "started": True}

@@ -3,15 +3,14 @@ import pythonmonkey as pm
 sha256 = pm.require("./sha256.js")
 
 
-def fn_test(value):
+def fn_test(value: str) -> str:
     """Check if a given value is odd.
 
     Args:
-        value: The input value to check, should be convertible to an integer.
+        value: The input value
 
     Returns:
-        str: 'true' if the number is odd, 'false' if even, or 'Invalid input' if the
-            value cannot be converted to an integer.
+        str: conversion to SHA256.
     """
     try:
         result = sha256(value)
