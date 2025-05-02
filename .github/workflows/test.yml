@@ -37,6 +37,12 @@ jobs:
         if: runner.os == 'Windows'
         run: git config --system core.longpaths true
       - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+      - name: Install node dependencies (only for Windows because it can't find npm executable)
+        if: runner.os == 'Windows'
+        run: |
+          cd wollok_kernel/wollok_ts
+          npm install
+          cd ../..      
       - name: Install Python dependencies
         run: |
           pip install -e ".[test]"
