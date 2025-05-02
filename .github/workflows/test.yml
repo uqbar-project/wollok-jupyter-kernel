@@ -40,6 +40,7 @@ jobs:
       - name: Install node dependencies recursively (only for Windows because it can't find npm executable)
         if: runner.os == 'Windows'
         run: |
+          cd wollok_kernel
           for /R %%f in (package.json) do (
             echo Found package.json in: %%~dpf
             pushd "%%~dpf"
