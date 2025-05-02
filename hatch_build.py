@@ -23,9 +23,9 @@ class CustomHook(BuildHookInterface):
         sys.path.insert(0, here)
         prefix = os.path.join(here, 'data_kernelspec')
 
+        self.find_and_install_npm_dependencies(start_dir=here)
+
         with TemporaryDirectory() as td:
-            self.find_and_install_npm_dependencies(td)
-            
             os.chmod(td, 0o755) # Starts off as 700, not user readable
             with open(os.path.join(td, 'kernel.json'), 'w') as f:
                 json.dump(kernel_json, f, sort_keys=True)
