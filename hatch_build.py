@@ -50,7 +50,7 @@ class CustomHook(BuildHookInterface):
             if "package.json" in files:
                 print(f"package.json found in: {root}")
                 try:
-                    subprocess.run(["npm", "install"], cwd=root, check=True)
+                    subprocess.run(["npm", "install", "--verbose"], cwd=root, check=True)
                     print(f"✅ npm install completed in {root}\n")
                 except subprocess.CalledProcessError as e:
                     print(f"❌ Error executing npm install in {root}: {e}\n")
