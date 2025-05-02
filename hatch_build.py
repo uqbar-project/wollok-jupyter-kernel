@@ -2,6 +2,7 @@ import os
 import sys
 from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 import subprocess
+import platform
 
 import argparse
 import json
@@ -23,7 +24,11 @@ class CustomHook(BuildHookInterface):
         sys.path.insert(0, here)
         prefix = os.path.join(here, 'data_kernelspec')
 
-        self.find_and_install_npm_dependencies(start_dir=here)
+        if platform.system() != "Windows":
+            self.find_and_install_npm_dependencies(start_dir=here)
+        else:
+            print("Skipping node dependencies installation on Windows")
+
 
         with TemporaryDirectory() as td:
             os.chmod(td, 0o755) # Starts off as 700, not user readable

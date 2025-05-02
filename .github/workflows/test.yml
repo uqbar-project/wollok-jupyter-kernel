@@ -42,7 +42,7 @@ jobs:
         run: |
           cd wollok_kernel/wollok_ts
           npm install
-          cd ../..      
+          cd ../..
       - name: Install Python dependencies
         run: |
           pip install -e ".[test]"
