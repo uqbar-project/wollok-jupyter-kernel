@@ -41,11 +41,13 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           cd wollok_kernel
-          for /R %%f in (package.json) do (
-            echo Found package.json in: %%~dpf
-            pushd "%%~dpf"
-            npm install
-            popd
+          for /F "delims=" %%d in ('dir /B /S /A:D') do (
+            if exist "%%d\package.json" (
+              echo Found package.json in: %%d
+              pushd "%%d"
+              npm install
+              popd
+            )
           )
         shell: cmd
       - name: Install Python dependencies
