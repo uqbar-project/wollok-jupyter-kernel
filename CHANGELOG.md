@@ -1,6 +1,9 @@
 # Changes in echo kernel
 
 <!-- <START NEW CHANGELOG ENTRY> -->
+## 1.2
+
+- Integration with TS Library with Pythonmonkey
 
 ## 1.1
 
