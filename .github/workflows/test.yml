@@ -23,23 +23,33 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.11"]
+        python-version: ["3.x"]
         include:
           - os: windows-latest
-            python-version: "3.11"
           - os: ubuntu-latest
-            python-version: "3.11"
           - os: macos-latest
-            python-version: "3.11"
     steps:
       - uses: actions/checkout@v4
-      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
       - uses: actions/setup-node@v4
-      - name: Install node dependencies
+        with:
+          node-version: 20
+      - name: Enable long paths
+        if: runner.os == 'Windows'
+        run: git config --system core.longpaths true
+      - uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+      - name: Install node dependencies recursively (only for Windows because it can't find npm executable)
+        if: runner.os == 'Windows'
         run: |
-          cd wollok_kernel/wollok_ts
-          npm install
-          cd ../..
+          cd wollok_kernel
+          for /F "delims=" %%d in ('dir /B /S /A:D') do (
+            if exist "%%d\package.json" (
+              echo Found package.json in: %%d
+              pushd "%%d"
+              npm install
+              popd
+            )
+          )
+        shell: cmd
       - name: Install Python dependencies
         run: |
           pip install -e ".[test]"
@@ -52,7 +62,6 @@ jobs:
           jupyter kernelspec list | grep wollok
 
   check_release:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -62,11 +71,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install node dependencies (necessary to build Python dependencies)
-        run: |
-          cd wollok_kernel/wollok_ts
-          npm install
-          cd ../..
       - name: Install Python Dependencies
         run: |
           pip install -e .
