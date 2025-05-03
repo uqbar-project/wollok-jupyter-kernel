@@ -1,19 +1,19 @@
 import pythonmonkey as pm
 
-sha256 = pm.require("./sha256.js")
+wollok = pm.require("./wollok.js")
 
 
-def fn_test(value: str) -> str:
-    """Check if a given value is odd.
+def execute_repl(expression: str) -> str:
+    """Call Wollok REPL with the given value.
 
     Args:
-        value: The input value
+        expression: executable code in Wollok.
 
     Returns:
-        str: conversion to SHA256.
+        str: Wollok interpreter output.
     """
     try:
-        result = sha256(value)
+        result = wollok.repl(expression)
         return str(result)
     except (ValueError, TypeError):
         return "Invalid input"
