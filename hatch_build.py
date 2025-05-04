@@ -50,8 +50,7 @@ class CustomHook(BuildHookInterface):
     def find_and_install_npm_dependencies(self, start_dir="."):
         """Find and install npm dependencies for every package.json files in subfolders"""
         print("Installing node dependencies")
-        subprocess.run(["pwd"])
-        exclude_folders = {"node_modules", ".git", ".venv", "__pycache__"}  # agrega más si es necesario
+        exclude_folders = {"node_modules", ".git", ".venv", "__pycache__"}
         subprocess.run(["pwd"])
         for root, folders, files in os.walk(start_dir):
             folders[:] = [folder for folder in folders if folder not in exclude_folders]
