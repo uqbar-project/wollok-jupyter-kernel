@@ -13,6 +13,7 @@ def execute_repl(expression: str) -> str:
         str: Wollok interpreter output.
     """
     try:
+        print(f"Executing: {expression}")
         result = wollok.repl(expression)
         return str(result)
     except (ValueError, TypeError):
