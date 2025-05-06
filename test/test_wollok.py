@@ -27,8 +27,8 @@ class WollokKernelTests(jkt.KernelTests):
     # code samples
     code_execute_result = [
         {
-            "code": "6",
-            "result": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+            "code": "6.even()",
+            "result": "true"
         }
     ]
 
@@ -48,6 +48,7 @@ class WollokKernelTests(jkt.KernelTests):
                         "No content.text received"
                     )
                     if "result" in sample:
+                        print(f"Expected: {msg["content"]["text"]}")
                         self.assertEqual(
                             msg["content"]["text"], sample["result"]
                         )

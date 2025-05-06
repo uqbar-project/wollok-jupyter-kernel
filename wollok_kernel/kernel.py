@@ -1,6 +1,7 @@
 from ipykernel.kernelbase import Kernel
 from wollok_kernel.wollok_ts.library import execute_repl
-
+import json
+import ast
 
 class WollokKernel(Kernel):
     implementation = "Wollok"

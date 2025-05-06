@@ -29,6 +29,7 @@ class CustomHook(BuildHookInterface):
         else:
             print("Skipping node dependencies installation on Windows")
 
+        self.copy_polyfills()
 
         with TemporaryDirectory() as td:
             os.chmod(td, 0o755) # Starts off as 700, not user readable
@@ -61,3 +62,20 @@ class CustomHook(BuildHookInterface):
                     print(f"✅ npm install completed in {root}\n")
                 except subprocess.CalledProcessError as e:
                     print(f"❌ Error executing npm install in {root}: {e}\n")
+
+    def copy_polyfills(self):
+        """Copy polyfills to the node_modules directory"""
+        here = os.path.join("wollok_kernel", "wollok_ts")
+        polyfills_dir = os.path.join(here, "polyfills")
+        target_dir = os.path.join(here, "node_modules")
+
+        if not os.path.exists(target_dir):
+            os.makedirs(target_dir)
+
+        for subdir in os.listdir(polyfills_dir):
+            dir_source_path = os.path.join(polyfills_dir, subdir)
+            dir_target_path = os.path.join(target_dir, subdir)
+            if os.path.exists(dir_target_path):
+                shutil.rmtree(dir_target_path)
+            shutil.copytree(dir_source_path, dir_target_path)
+            print(f"Copied {subdir} to {target_dir}")

@@ -20,6 +20,3 @@ data_kernelspec
 
 .history
 node_modules/
-
-!node_modules/crypto/
-!node_modules/crypto/index.js
