@@ -1,7 +1,21 @@
 import pythonmonkey as pm
 
-wollok = pm.require("./wollok.js")
+# ===================================================================
+# Polyfills
 
+with open("wollok_kernel/wollok_ts/polyfills/module.js") as module_file:
+    module_code = module_file.read()
+
+pm.eval(module_code)
+
+with open("wollok_kernel/wollok_ts/polyfills/crypto.js") as crypto_file:
+    crypto_code = crypto_file.read()
+
+pm.eval(r'defineModule("crypto", "{crypto_code}")')
+
+# ===================================================================
+
+wollok = pm.require("./wollok.js")
 
 def execute_repl(expression: str) -> str:
     """Call Wollok REPL with the given value.
