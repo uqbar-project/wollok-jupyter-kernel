@@ -65,7 +65,7 @@ class CustomHook(BuildHookInterface):
 
     def copy_polyfills(self):
         """Copy polyfills to the node_modules directory"""
-        here = os.path.join("wollok_kernel", "wollok_ts")
+        here = os.path.join("wollok_kernel", "wollok_bridge")
         polyfills_dir = os.path.join(here, "polyfills")
         target_dir = os.path.join(here, "node_modules")
 

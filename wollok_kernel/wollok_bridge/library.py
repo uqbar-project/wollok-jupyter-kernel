@@ -12,7 +12,6 @@ def execute_repl(expression: str) -> str:
         str: Wollok interpreter output.
     """
     try:
-        result = wollok.repl(expression)
-        return str(result)
+        return wollok.repl(expression)
     except (ValueError, TypeError):
         return "Invalid input"

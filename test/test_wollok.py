@@ -28,7 +28,11 @@ class WollokKernelTests(jkt.KernelTests):
     code_execute_result = [
         {
             "code": "6.even()",
-            "result": "true"
+            "result": "✓ true"
+        },
+        {
+            "code": "3.mayor()",
+            "result": "✗ Evaluation Error!\n  3 does not understand mayor()"
         }
     ]
 

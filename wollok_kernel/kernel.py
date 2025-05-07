@@ -1,5 +1,5 @@
 from ipykernel.kernelbase import Kernel
-from wollok_kernel.wollok_ts.library import execute_repl
+from wollok_kernel.wollok_bridge.library import execute_repl
 import json
 import ast
 
