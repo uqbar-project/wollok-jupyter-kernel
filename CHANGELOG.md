@@ -3,7 +3,7 @@
 <!-- <START NEW CHANGELOG ENTRY> -->
 ## 1.2
 
-- Integration with TS Library with Pythonmonkey
+- Integration with Wollok TS Library using Pythonmonkey
 
 ## 1.1
 

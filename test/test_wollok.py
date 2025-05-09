@@ -52,7 +52,6 @@ class WollokKernelTests(jkt.KernelTests):
                         "No content.text received"
                     )
                     if "result" in sample:
-                        print(f"Expected: {msg["content"]["text"]}")
                         self.assertEqual(
                             msg["content"]["text"], sample["result"]
                         )
