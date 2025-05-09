@@ -54,3 +54,6 @@ include = [
 "data_kernelspec/share" = "share"
 
 reportMissingModuleSource = "none"
+
+[tool.check-wheel-contents]
+ignore = ["W002"]
