@@ -6,6 +6,8 @@
 
 `wollok_kernel` is a Jupyter kernel implementation, started from [a wrapper kernel](http://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html).
 
+![Wollok Kernel demo](./images/wollok_kernel_demo.png)
+
 ## Contribution
 
 If you want to collaborate, follow the [developer instructions](https://github.com/uqbar-project/wollok-jupyter-kernel/wiki/Developer-environment).

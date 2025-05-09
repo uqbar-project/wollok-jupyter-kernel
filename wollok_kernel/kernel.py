@@ -1,6 +1,7 @@
 from ipykernel.kernelbase import Kernel
-from wollok_kernel.wollok_ts.library import fn_test
-
+from wollok_kernel.wollok_bridge.library import execute_repl
+import json
+import ast
 
 class WollokKernel(Kernel):
     implementation = "Wollok"
@@ -15,10 +16,15 @@ class WollokKernel(Kernel):
     banner = "Wollok >>> kernel"
 
     def do_execute(
-        self, code: str, silent: bool, store_history=True, user_expressions=None, allow_stdin=False
+        self,
+        code: str,
+        silent: bool,
+        store_history=True,
+        user_expressions=None,
+        allow_stdin=False,
     ):
         if not silent:
-            result = fn_test(code)
+            result = execute_repl(code)
             stream_content = {"name": "stdout", "text": result, "data": result}
             self.send_response(self.iopub_socket, "stream", stream_content)
 
