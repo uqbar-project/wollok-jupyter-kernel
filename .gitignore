@@ -19,4 +19,4 @@ htmlcov
 data_kernelspec
 
 .history
-node_modules
+node_modules/

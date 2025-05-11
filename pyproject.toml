@@ -48,9 +48,12 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel.force-include]
-"wollok_kernel/wollok_ts/node_modules" = "wollok_kernel/wollok_ts/node_modules"
+"wollok_kernel/wollok_bridge/node_modules" = "wollok_kernel/wollok_bridge/node_modules"
 
 [tool.hatch.build.targets.wheel.shared-data]
 "data_kernelspec/share" = "share"
 
 reportMissingModuleSource = "none"
+
+[tool.check-wheel-contents]
+ignore = ["W002"]

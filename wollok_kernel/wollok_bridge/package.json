@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "crypto-js": "^4.2.0"
+    "wollok-ts": "^4.2.1"
   }
 }
