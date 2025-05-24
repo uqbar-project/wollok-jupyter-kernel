@@ -100,7 +100,7 @@ And select kernel: click on the right side, on `Select Kernel` option > Jupyter 
 
 ## 👩‍💻 Contribution
 
-- If you want to collaborate, follow the [developer instructions](https://github.com/uqbar-project/wollok-jupyter-kernel/wiki/Developer-environment).
+- If you want to collaborate, follow the [developer instructions](https://github.com/uqbar-project/wollok-jupyter-kernel/wiki/Developer-environment). There's also a [main architecture explanation](https://github.com/uqbar-project/wollok-jupyter-kernel/wiki/Main-architecture)
 - You can also [join the Discord channel!](https://discord.gg/ZstgCPKEaa)
 - Additional info is available at the [wiki](https://github.com/uqbar-project/wollok-jupyter-kernel/wiki)
 
