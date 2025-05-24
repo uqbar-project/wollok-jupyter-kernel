@@ -8,7 +8,7 @@
 
 <img src="./images/wollok_kernel_demo.png" alt="Wollok Kernel Demo">
 
-## Installation
+## 💻 Installation
 
 ### Pre-requisites
 
@@ -34,24 +34,27 @@ Install **jupyter client**, **kernels system** and **notebooks infrastructure**:
 pip install jupyter ipykernel
 ```
 
+Install [Conda](https://anaconda.org/anaconda/conda) environment manager. Follow [the instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) for your operating system.
+
 ### Wollok Kernel
 
-Clone this repository
+Clone this repository:
 
 ```bash
 git clone https://github.com/uqbar-project/wollok-jupyter-kernel # you can also use git@... option
 ```
 
-Install Conda.
-TODO: add instructions.
-
-Install Wollok Jupyter Kernel
+Install Wollok Jupyter Kernel using conda:
 
 ```bash
 cd ./wollok-jupyter-kernel/wollok_kernel
 conda create -n wollok jupyter
 conda init
-# Restart a new terminal and run
+```
+
+Open a new terminal and run
+
+```bash
 conda activate wollok
 cd ..
 pip install .
@@ -93,12 +96,15 @@ And select kernel: click on the right side, on `Select Kernel` option > Jupyter 
 ![Install 02](./images/install_02_select_kernel.png)
 
 
-## Contribution
+## 👩‍💻 Contribution
 
-If you want to collaborate, follow the [developer instructions](https://github.com/uqbar-project/wollok-jupyter-kernel/wiki/Developer-environment).
+- If you want to collaborate, follow the [developer instructions](https://github.com/uqbar-project/wollok-jupyter-kernel/wiki/Developer-environment).
+- You can also [join the Discord channel!](https://discord.gg/ZstgCPKEaa)
+- Additional info is available at the [wiki](https://github.com/uqbar-project/wollok-jupyter-kernel/wiki)
 
-
-## Using Wollok kernel
+## 🦄 Using Wollok kernel
 
 - **Notebook**: The *New* menu in the notebook should show an option for a Wollok notebook.
 - **Console frontends**: To use it with the console frontends, add ``--kernel wollok`` to their command line arguments.
+
+#### Powered by [Uqbar](https://uqbar.org/)
