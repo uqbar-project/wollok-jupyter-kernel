@@ -36,6 +36,8 @@ pip install jupyter ipykernel
 
 Install [Conda](https://anaconda.org/anaconda/conda) environment manager. Follow [the instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) for your operating system.
 
+Install [Node & npm](https://nodejs.org/en/download) tools.
+
 ### Wollok Kernel
 
 Clone this repository:
