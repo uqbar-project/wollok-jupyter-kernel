@@ -1,12 +1,12 @@
 [![Python package](https://github.com/uqbar-project/wollok-jupyter-kernel/actions/workflows/test.yml/badge.svg)](https://github.com/uqbar-project/wollok-jupyter-kernel/actions/workflows/test.yml)
 
-<img src="./images/wollok-jupyter.png" height="100px" width="85px">
+<img src="https://github.com/user-attachments/assets/ca46741f-f499-4dfe-a594-481926c9d1f7" alt="Wollok Jupyter Logo" height="100px" width="85px">
 
 ## Wollok Kernel for Jupyter notebook
 
 `wollok_kernel` is a Jupyter kernel implementation, started from [a wrapper kernel](http://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html).
 
-<img src="./images/wollok_kernel_demo.png" alt="Wollok Kernel Demo">
+<img src="https://github.com/user-attachments/assets/377221a0-45b6-4f81-b63c-0f1681008922" alt="Wollok Kernel Demo">
 
 ## 💻 Installation
 
@@ -93,10 +93,9 @@ Then you can create a New File... > Jupyter Notebook
 
 And select kernel: click on the right side, on `Select Kernel` option > Jupyter Kernel > Wollok:
 
-<img src="./images/install_01_select_kernel.png" width="250px" height="auto">
+<img src="./images/install_01_select_kernel.png" alt="Install Wollok Kernel" width="250px" height="auto">
 
 ![Install 02](./images/install_02_select_kernel.png)
-
 
 ## 👩‍💻 Contribution
 
