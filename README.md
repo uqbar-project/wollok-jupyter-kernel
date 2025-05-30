@@ -20,20 +20,6 @@ python --version
 
 If `python3 --version` works, you should use an alias or replace python with python3.
 
-It is recommended to create a virtual environment:
-
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
-```
-
-Install **jupyter client**, **kernels system** and **notebooks infrastructure**:
-
-```bash
-pip install jupyter ipykernel
-```
-
 Install [Conda](https://anaconda.org/anaconda/conda) environment manager. Follow [the instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) for your operating system.
 
 Install [Node & npm](https://nodejs.org/en/download) tools.
