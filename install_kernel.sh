@@ -20,8 +20,10 @@ conda install -c conda-forge jupyter jupyter_client ipykernel hatchling -y
 echo "Installing Wollok kernel..."
 pip install --no-cache-dir .
 
-# Create kernel directory
-KERNEL_DIR="$(python -c 'from jupyter_core.paths import jupyter_data_dir; print(jupyter_data_dir())')/kernels/wollok"
+# Create a temporary directory for the kernel spec
+echo "Creating kernel specification..."
+TEMP_DIR=$(mktemp -d)
+KERNEL_DIR="$TEMP_DIR/wollok"
 mkdir -p "$KERNEL_DIR"
 
 # Get the Python executable path
@@ -40,15 +42,9 @@ cat > "$KERNEL_DIR/kernel.json" << EOL
  "display_name": "Wollok",
  "language": "wollok",
  "metadata": {
-  "debugger": false,
-  "kernelspec": {
-   "display_name": "Wollok",
-   "language": "wollok",
-   "name": "wollok"
-  }
+  "debugger": false
  },
- "env": {},
- "interrupt_mode": "message"
+ "env": {}
 }
 EOL
 
@@ -62,6 +58,9 @@ done
 # Register the kernel
 echo "Registering Wollok kernel..."
 python -m jupyter kernelspec install --user --name=wollok "$KERNEL_DIR"
+
+# Clean up the temporary directory
+rm -rf "$TEMP_DIR"
 
 # Force refresh the kernel list
 echo -e "\n✅ Wollok kernel has been installed successfully!"
