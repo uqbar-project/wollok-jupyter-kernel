@@ -62,12 +62,7 @@ python -m jupyter kernelspec install --user --name=wollok "$KERNEL_DIR"
 # Clean up the temporary directory
 rm -rf "$TEMP_DIR"
 
-# Force refresh the kernel list
+# Show success message and list installed kernels
 echo -e "\n✅ Wollok kernel has been installed successfully!"
 echo -e "\nAvailable kernels:"
-jupyter kernelspec list --json | python -c '
-import json, sys
-kernels = json.load(sys.stdin)["kernelspec"]
-for name, spec in kernels.items():
-    print(f"{name}: {spec["resource_dir"]}")
-'
+jupyter kernelspec list
