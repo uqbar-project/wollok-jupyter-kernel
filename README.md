@@ -40,18 +40,18 @@ conda init
 ./install_kernel.sh
 ```
 
-Check if the kernel is installed:
-
-```bash
-jupyter kernelspec list
-```
-
-You should see an output similar to the following:
+At the end of the script you should see an output similar to the following:
 
 ```bash
 Available kernels:
   python3    /path/to/venv/lib/python3.13/site-packages/ipykernel/resources
   wollok     /path/to/wollok-jupyter-kernel/venv/share/jupyter/kernels/wollok
+```
+
+If you need you can uninstall the kernel by running
+
+```bash
+./uninstall_kernel.sh
 ```
 
 ### VSCode
@@ -68,11 +68,13 @@ Then you can create a New File... > Jupyter Notebook
 
 ![New Jupyter Notebook File](https://github.com/user-attachments/assets/986e6662-58c7-4617-acb1-9e38d0606d00)
 
-And select kernel: click on the right side, on `Select Kernel` option > Jupyter Kernel > Wollok:
+And select kernel: click on the right side, on `Select Kernel` option > **Jupyter Kernel** > **Wollok**:
 
 <img src="https://github.com/user-attachments/assets/8cf97362-18b4-4b57-b36a-c6233fb822f7" alt="Install Wollok Kernel" width="250px" height="auto">
 
 ![Install 02](https://github.com/user-attachments/assets/6603c6e6-0071-4df3-b867-727f9d93878b)
+
+> Make sure you don't select `Python Environment` because this will expect a Python kernel, not a Wollok kernel.
 
 ## 👩‍💻 Contribution
 
