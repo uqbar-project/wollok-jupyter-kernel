@@ -1,12 +1,12 @@
 [![Python package](https://github.com/uqbar-project/wollok-jupyter-kernel/actions/workflows/test.yml/badge.svg)](https://github.com/uqbar-project/wollok-jupyter-kernel/actions/workflows/test.yml)
 
-<img src="./images/wollok-jupyter.png" height="100px" width="85px">
+<img src="https://github.com/user-attachments/assets/ca46741f-f499-4dfe-a594-481926c9d1f7" alt="Wollok Jupyter Logo" height="100px" width="85px">
 
 ## Wollok Kernel for Jupyter notebook
 
 `wollok_kernel` is a Jupyter kernel implementation, started from [a wrapper kernel](http://jupyter-client.readthedocs.io/en/latest/wrapperkernels.html).
 
-<img src="./images/wollok_kernel_demo.png" alt="Wollok Kernel Demo">
+<img src="https://github.com/user-attachments/assets/377221a0-45b6-4f81-b63c-0f1681008922" alt="Wollok Kernel Demo">
 
 ## 💻 Installation
 
@@ -20,20 +20,6 @@ python --version
 
 If `python3 --version` works, you should use an alias or replace python with python3.
 
-It is recommended to create a virtual environment:
-
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
-```
-
-Install **jupyter client**, **kernels system** and **notebooks infrastructure**:
-
-```bash
-pip install jupyter ipykernel
-```
-
 Install [Conda](https://anaconda.org/anaconda/conda) environment manager. Follow [the instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) for your operating system.
 
 Install [Node & npm](https://nodejs.org/en/download) tools.
@@ -46,35 +32,26 @@ Clone this repository:
 git clone https://github.com/uqbar-project/wollok-jupyter-kernel # you can also use git@... option
 ```
 
-Install Wollok Jupyter Kernel using conda:
+Install Wollok Jupyter Kernel:
 
 ```bash
-cd ./wollok-jupyter-kernel/wollok_kernel
-conda create -n wollok jupyter
+cd ./wollok-jupyter-kernel
 conda init
+./install_kernel.sh
 ```
 
-Open a new terminal and run
-
-```bash
-conda activate wollok
-cd ..
-pip install .
-jupyter kernelspec install . --sys-prefix --name wollok --replace
-```
-
-After downloading all the dependencies, you can check that Wollok kernel is successfully installed:
-
-```bash
-jupyter kernelspec list
-```
-
-You should see an output similar to the following:
+At the end of the script you should see an output similar to the following:
 
 ```bash
 Available kernels:
   python3    /path/to/venv/lib/python3.13/site-packages/ipykernel/resources
   wollok     /path/to/wollok-jupyter-kernel/venv/share/jupyter/kernels/wollok
+```
+
+If you need you can uninstall the kernel by running
+
+```bash
+./uninstall_kernel.sh
 ```
 
 ### VSCode
@@ -85,18 +62,19 @@ Install Jupyter extension in VSCode:
 - Look for "Jupyter"
 - Install Microsoft official extension
 
-![Install VSCode extension](./images/install_vscode_extension.png)
+![Install VSCode extension](https://github.com/user-attachments/assets/5af3f097-d1ad-483a-baad-6ce40d45afe1")
 
 Then you can create a New File... > Jupyter Notebook
 
-![New Jupyter Notebook File](./images/install_new_jupyter_notebook.png)
+![New Jupyter Notebook File](https://github.com/user-attachments/assets/986e6662-58c7-4617-acb1-9e38d0606d00)
 
-And select kernel: click on the right side, on `Select Kernel` option > Jupyter Kernel > Wollok:
+And select kernel: click on the right side, on `Select Kernel` option > **Jupyter Kernel** > **Wollok**:
 
-<img src="./images/install_01_select_kernel.png" width="250px" height="auto">
+<img src="https://github.com/user-attachments/assets/8cf97362-18b4-4b57-b36a-c6233fb822f7" alt="Install Wollok Kernel" width="250px" height="auto">
 
-![Install 02](./images/install_02_select_kernel.png)
+![Install 02](https://github.com/user-attachments/assets/6603c6e6-0071-4df3-b867-727f9d93878b)
 
+> Make sure you don't select `Python Environment` because this will expect a Python kernel, not a Wollok kernel.
 
 ## 👩‍💻 Contribution
 

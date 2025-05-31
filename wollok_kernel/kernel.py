@@ -10,7 +10,7 @@ class WollokKernel(Kernel):
     language_version = "3.3.1"
     language_info = {
         "name": "wollok",
-        "mimetype": "text/plain",
+        "mimetype": "text/x-wollok",
         "file_extension": ".wlk",
     }
     banner = "Wollok >>> kernel"
