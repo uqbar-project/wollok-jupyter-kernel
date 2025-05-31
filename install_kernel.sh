@@ -20,49 +20,19 @@ conda install -c conda-forge jupyter jupyter_client ipykernel hatchling -y
 echo "Installing Wollok kernel..."
 pip install --no-cache-dir .
 
-# Create a temporary directory for the kernel spec
-echo "Creating kernel specification..."
-TEMP_DIR=$(mktemp -d)
-KERNEL_DIR="$TEMP_DIR/wollok"
-mkdir -p "$KERNEL_DIR"
+# The kernel spec is installed by hatch_build.py during package installation
+# We just need to register it with the correct prefix
+KERNEL_SPEC_DIR="$(python -c 'import sys; from pathlib import Path; print(Path(sys.prefix) / "share" / "jupyter" / "kernels" / "wollok")')"
 
-# Get the Python executable path
-PYTHON_PATH="$(which python)"
-
-# Create kernel.json with proper configuration
-cat > "$KERNEL_DIR/kernel.json" << EOL
-{
- "argv": [
-  "$PYTHON_PATH",
-  "-m",
-  "wollok_kernel",
-  "-f",
-  "{connection_file}"
- ],
- "display_name": "Wollok",
- "language": "wollok",
- "metadata": {
-  "debugger": false
- },
- "env": {}
-}
-EOL
-
-# Copy any logo files if they exist
-for logo in logo-32x32.png logo-64x64.png; do
-    if [ -f "$logo" ]; then
-        cp "$logo" "$KERNEL_DIR/"
-    fi
-done
+if [ ! -d "$KERNEL_SPEC_DIR" ]; then
+    echo "Error: Kernel spec not found at $KERNEL_SPEC_DIR"
+    exit 1
+fi
 
 # Register the kernel
 echo "Registering Wollok kernel..."
-python -m jupyter kernelspec install --user --name=wollok "$KERNEL_DIR"
-
-# Clean up the temporary directory
-rm -rf "$TEMP_DIR"
+jupyter kernelspec install --user "$KERNEL_SPEC_DIR"
 
 # Show success message and list installed kernels
 echo -e "\n✅ Wollok kernel has been installed successfully!"
-echo -e "\nAvailable kernels:"
 jupyter kernelspec list
