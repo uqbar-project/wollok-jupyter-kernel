@@ -16,6 +16,15 @@ kernel_json = {
     "argv": [sys.executable, "-m", "wollok_kernel", "-f", "{connection_file}"],
     "display_name": "Wollok",
     "language": "wollok",
+    "metadata": {
+        "vscode": {
+            "interpreter": {
+                "hash": ""
+            },
+            "displayName": "Wollok",
+            "language": "wollok"
+        }
+    }
 }
 
 class CustomHook(BuildHookInterface):
@@ -31,21 +40,25 @@ class CustomHook(BuildHookInterface):
 
         self.copy_polyfills()
 
-        with TemporaryDirectory() as td:
-            os.chmod(td, 0o755) # Starts off as 700, not user readable
-            with open(os.path.join(td, 'kernel.json'), 'w') as f:
-                json.dump(kernel_json, f, sort_keys=True)
-            print('Installing Jupyter kernel spec')
-
-            # Requires logo files in kernel root directory
-            cur_path = os.path.dirname(os.path.realpath(__file__))
-            for logo in ["logo-32x32.png", "logo-64x64.png"]:
-                try:
-                    shutil.copy(os.path.join(cur_path, logo), td)
-                except FileNotFoundError:
-                    print("Custom logo files not found. Default logos will be used.")
-
-            KernelSpecManager().install_kernel_spec(td, 'wollok', user=False, prefix=prefix)
+        # Create the kernel.json file in the package data directory
+        os.makedirs(os.path.join(prefix, 'share', 'jupyter', 'kernels', 'wollok'), exist_ok=True)
+        kernel_json_path = os.path.join(prefix, 'share', 'jupyter', 'kernels', 'wollok', 'kernel.json')
+        
+        with open(kernel_json_path, 'w') as f:
+            json.dump(kernel_json, f, sort_keys=True)
+            
+        print('Created kernel.json in package data directory')
+        
+        # Copy logo files if they exist
+        cur_path = os.path.dirname(os.path.realpath(__file__))
+        for logo in ["logo-32x32.png", "logo-64x64.png"]:
+            try:
+                shutil.copy(
+                    os.path.join(cur_path, logo),
+                    os.path.join(prefix, 'share', 'jupyter', 'kernels', 'wollok', logo)
+                )
+            except FileNotFoundError:
+                print("Custom logo files not found. Default logos will be used.")
 
 
     def find_and_install_npm_dependencies(self, start_dir="."):
