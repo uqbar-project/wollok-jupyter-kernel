@@ -17,13 +17,33 @@ kernel_json = {
     "display_name": "Wollok",
     "language": "wollok",
     "metadata": {
+        "debugger": False,
         "vscode": {
             "interpreter": {
                 "hash": ""
             },
             "displayName": "Wollok",
+            "language": "wollok",
+            "name": "wollok",
+            "mimetype": "text/x-wollok"
+        },
+        "kernelspec": {
+            "name": "wollok",
+            "display_name": "Wollok",
             "language": "wollok"
         }
+    },
+    "language_info": {
+        "name": "wollok",
+        "file_extension": ".wlk",
+        "mimetype": "text/x-wollok",
+        "version": "1.0",
+        "codemirror_mode": {
+            "name": "wollok",
+            "mimetype": "text/x-wollok"
+        },
+        "pygments_lexer": "wollok",
+        "nbconvert_exporter": "wollok"
     }
 }
 
