@@ -60,19 +60,18 @@ Install Jupyter extension in VSCode:
 
 - Open Extension Tab (⇧⌘X or Ctrl+Shift+X)
 - Look for "Jupyter"
+- (Recommended) Install Wollok LSP extension
 - Install Microsoft official extension
 
-![Install VSCode extension](https://github.com/user-attachments/assets/5af3f097-d1ad-483a-baad-6ce40d45afe1")
+![Install VSCode extension](https://github.com/user-attachments/assets/5af3f097-d1ad-483a-baad-6ce40d45afe1)
 
 Then you can create a New File... > Jupyter Notebook
 
 ![New Jupyter Notebook File](https://github.com/user-attachments/assets/986e6662-58c7-4617-acb1-9e38d0606d00)
 
-And select kernel: click on the right side, on `Select Kernel` option > **Jupyter Kernel** > **Wollok**:
+And select kernel: click on the Kernel link at the right side > **Select another kernel** > **Jupyter Kernel** > **Wollok**:
 
-<img src="https://github.com/user-attachments/assets/8cf97362-18b4-4b57-b36a-c6233fb822f7" alt="Install Wollok Kernel" width="250px" height="auto">
-
-![Install 02](https://github.com/user-attachments/assets/6603c6e6-0071-4df3-b867-727f9d93878b)
+![demoWollokJupyter](https://github.com/user-attachments/assets/4c2b7d9a-dbe3-4a5e-87b7-d553b1c6b831)
 
 > Make sure you don't select `Python Environment` because this will expect a Python kernel, not a Wollok kernel.
 
