@@ -86,4 +86,10 @@ And select kernel: click on the Kernel link at the right side > **Select another
 - **Notebook**: The *New* menu in the notebook should show an option for a Wollok notebook.
 - **Console frontends**: To use it with the console frontends, add ``--kernel wollok`` to their command line arguments.
 
+## ☁️ Using Wollok Kernel online
+
+You can use [this project](https://github.com/fdodino/wollok-binder-example?tab=readme-ov-file) as an example on how to use the Wollok kernel in **MyBinder** site, a Jupyter Notebook environment in the cloud. It will use the latest stable version of the Wollok kernel based on [PyPI repository](https://pypi.org/project/wollok-kernel/).
+
+Click on the `Launch binder` icon, wait for the environment to be ready, and you should see a Jupyter notebook with the Wollok kernel selected.
+
 #### Powered by [Uqbar](https://uqbar.org/)
