@@ -2,6 +2,10 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 1.6
+
+- 🌐 Add MyBinder instructions
+
 ## 1.5
 
 - 🤖 Automate installation
