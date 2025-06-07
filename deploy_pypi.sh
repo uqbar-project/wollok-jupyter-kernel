@@ -8,7 +8,8 @@ rm -rf dist/ build/ *.egg-info/
 
 # Install required tools
 echo "📦 Installing build tools..."
-pip install -q build twine
+pip install --upgrade pip
+pip install -q build twine ipykernel
 
 # Get current local version
 CURRENT_VERSION=$(python -c "from wollok_kernel import __version__; print(__version__)")
