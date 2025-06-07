@@ -5,6 +5,7 @@ on:
     tags:
       # Publish when a tag like v1.0.0 is pushed
       - 'v*.*.*'
+  workflow_dispatch: 
 
 jobs:
   deploy:
