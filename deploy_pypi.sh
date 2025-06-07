@@ -10,6 +10,7 @@ rm -rf dist/ build/ *.egg-info/
 echo "📦 Installing build tools..."
 pip install --upgrade pip
 pip install -q build twine ipykernel
+pip install pythonmonkey
 
 # Get current local version
 CURRENT_VERSION=$(python -c "from wollok_kernel import __version__; print(__version__)")
