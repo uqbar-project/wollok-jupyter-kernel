@@ -18,6 +18,23 @@ jobs:
       with:
         node-version: 20
 
+    - uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-npm-cache
+        restore-keys: |
+          ${{ runner.os }}-npm-
+
+    - name: Install node dependencies recursively
+      run: |
+        echo "🔍 Looking for package.json files to run npm install..."
+
+        find wollok_kernel -type f -name package.json | while read pkg; do
+          dir=$(dirname "$pkg")
+          echo "📦 Found package.json in: $dir"
+          (cd "$dir" && npm install)
+        done
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
