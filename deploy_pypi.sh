@@ -52,20 +52,28 @@ fi
 
 echo "📦 Latest PyPI version: $PYPI_VERSION"
 
-# Compare versions
-if [ "$(printf '%s\n' "$CURRENT_VERSION" "$PYPI_VERSION" | sort -V | head -n1)" = "$CURRENT_VERSION" ]; then
-    if [ "$CURRENT_VERSION" = "$PYPI_VERSION" ]; then
-        echo "❌ Error: Version $CURRENT_VERSION is already published on PyPI"
-        echo "Please update the version in wollok_kernel/__init__.py"
-        exit 1
-    fi
-    # Current version is greater than PyPI version, continue
-    echo "✅ Version $CURRENT_VERSION is newer than PyPI version $PYPI_VERSION"
-else
-    echo "❌ Error: Local version $CURRENT_VERSION is older than PyPI version $PYPI_VERSION"
-    echo "Please update the version in wollok_kernel/__init__.py"
-    exit 1
-fi
+# Compare versions using Python's packaging module
+echo "🔎 Comparing versions using packaging.version..."
+
+pip install -q packaging
+
+python3 - <<EOF
+from packaging.version import parse
+
+local = parse("$CURRENT_VERSION")
+remote = parse("$PYPI_VERSION")
+
+if local < remote:
+    print(f"❌ Error: Local version {local} is older than PyPI version {remote}")
+    print("Please update the version in wollok_kernel/__init__.py")
+    exit(1)
+elif local == remote:
+    print(f"❌ Error: Version {local} is already published on PyPI")
+    print("Please update the version in wollok_kernel/__init__.py")
+    exit(1)
+else:
+    print(f"✅ Version {local} is newer than PyPI version {remote}")
+EOF
 
 # Build the package
 echo "🔨 Building package..."
