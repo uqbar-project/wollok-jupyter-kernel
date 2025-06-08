@@ -13,7 +13,7 @@ description = "Wollok kernel for Jupyter"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [
-    { name = "Jupyter Development Team", email = "jupyter@googlegroups.com" },
+    { name = "Uqbar Project", email = "info@uqbar.org" },
 ]
 classifiers = [
     "Intended Audience :: Developers",
