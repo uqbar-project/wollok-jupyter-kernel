@@ -25,20 +25,18 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-npm-
 
-    - name: Install node dependencies recursively
-      run: |
-        echo "🔍 Looking for package.json files to run npm install..."
-
-        find wollok_kernel -type f -name package.json | while read pkg; do
-          dir=$(dirname "$pkg")
-          echo "📦 Found package.json in: $dir"
-          (cd "$dir" && npm install)
-        done
-
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.x'
+
+    - name: Install build tools
+      run: |
+        pip install hatch
+
+    - name: Build package with hatch (npm install recursively & copy Node polyfills)
+      run: |
+        hatch build
 
     - name: Publish to PyPI
       env:
